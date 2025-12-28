@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlipHire – Hire Fresh Talent & Freshers</title>
+  <link rel="stylesheet" href="Css.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="FlipHire - The fresher-first hiring platform where companies discover and hire verified students and entry-level candidates. Find fresh talent today.">
+</head>
+<body>
+  
+<!-- LANGUAGE SWITCHER -->
+<div class="language-switcher" id="languageSwitcher">
+  <button class="lang-btn" onclick="toggleLanguageMenu()" aria-label="Select language">
+    <i class="fas fa-globe"></i>
+    <span id="currentLang">EN</span>
+    <i class="fas fa-chevron-down"></i>
+  </button>
+  <div class="lang-menu" id="langMenu">
+    <a href="#" onclick="changeLanguage('en'); return false;" data-lang="en" class="lang-option active">English</a>
+    <a href="#" onclick="changeLanguage('hi'); return false;" data-lang="hi" class="lang-option">हिंदी</a>
+    <a href="#" onclick="changeLanguage('es'); return false;" data-lang="es" class="lang-option">Español</a>
+    <a href="#" onclick="changeLanguage('fr'); return false;" data-lang="fr" class="lang-option">Français</a>
+  </div>
+</div>
+  
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress"></div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast"></div>
+
+<!-- MOBILE MENU TOGGLE -->
+<button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <h2 class="logo">FlipHire</h2>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown">
+        <a href="#talent" class="dropdown-trigger">
+          Find Talent <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#talent">Browse Candidates</a>
+          <a href="#categories">By Category</a>
+          <a href="#search">Search Talent</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="#pricing" class="dropdown-trigger">
+          Solutions <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#pricing">Pricing Plans</a>
+          <a href="#comparison">Compare Plans</a>
+          <a href="#roi">ROI Calculator</a>
+          <a href="#analytics">Analytics</a>
+        </div>
+      </div>
+      <a href="#candidates">For Candidates</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <div class="nav-actions">
+        <a href="#signin" class="signin-btn" onclick="openModal('loginModal')">Sign In</a>
+        <a href="#join" class="join-btn" onclick="openModal('signupModal')">Start Hiring</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="lang-toggle" onclick="toggleLanguageMenu()" aria-label="Change language">
+          <i class="fas fa-globe"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Hire Fresh Talent with <span class="highlight">FlipHire</span></h1>
+      <p class="hero-subtitle">The fresher-first hiring platform where companies discover and hire verified students and 0-2 year experience candidates. Access a pool of motivated talent ready to grow with your company.</p>
+      <div class="hero-cta">
+        <button class="btn-primary btn-large" onclick="scrollToSection('talent')">Find Talent</button>
+        <button class="btn-secondary btn-large" onclick="scrollToSection('how')">Post Hiring Need</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-target="50000">0</div>
+          <div class="stat-label">Available Candidates</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2000">0</div>
+          <div class="stat-label">Companies Hiring</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="30000">0</div>
+          <div class="stat-label">Successful Hires</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-visual">
+        <div class="floating-card card-1">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Raj K. - Developer</div>
+          <div class="card-company">BSc IT • React, Node.js</div>
+        </div>
+        <div class="floating-card card-2">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Priya S. - Designer</div>
+          <div class="card-company">BDes • Figma, UI/UX</div>
+        </div>
+        <div class="floating-card card-3">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Amit M. - Analyst</div>
+          <div class="card-company">BSc Data Science • Python, SQL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY FLIPHIRE SECTION -->
+<section class="why-section" id="why">
+  <div class="container">
+    <h2 class="section-title">Why FlipHire?</h2>
+    <p class="section-subtitle">The platform where companies come to discover and hire fresh talent</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3>Access Fresh Talent</h3>
+        <p>Connect with motivated freshers and students eager to start their careers. No need to filter through experienced candidates.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✅</div>
+        <h3>Verified Candidates</h3>
+        <p>Every candidate profile is verified. Skills, education, and background checked. Hire with confidence.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Faster Hiring</h3>
+        <p>Post your hiring needs and get matched with qualified freshers instantly. Reduce time-to-hire significantly.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>Cost-Effective</h3>
+        <p>Hire talented freshers at competitive rates. Build your team with motivated candidates ready to grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS SECTION -->
+<section class="how-section" id="how">
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Hire fresh talent in three simple steps</p>
+    <div class="how-steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-icon">📝</div>
+        <h3>Post Hiring Need</h3>
+        <p>Create your company profile and post what talent you're looking for. Specify role, skills, and requirements.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-icon">🔍</div>
+        <h3>Browse Talent Pool</h3>
+        <p>Explore verified candidate profiles. Filter by skills, education, location, and experience level.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-icon">🤝</div>
+        <h3>Connect & Hire</h3>
+        <p>Reach out to candidates directly. Interview and hire the best fit for your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH SECTION -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-container">
+      <div class="search-box-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="talentSearch" class="search-input" placeholder="Search for talent by skills, role, or location...">
+        <button class="search-btn" onclick="performSearch()">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+      <div class="search-filters">
+        <select id="roleFilter" class="filter-select">
+          <option value="">All Roles</option>
+          <option value="developer">Developer</option>
+          <option value="designer">Designer</option>
+          <option value="analyst">Analyst</option>
+          <option value="marketing">Marketing</option>
+        </select>
+        <select id="locationFilter" class="filter-select">
+          <option value="">All Locations</option>
+          <option value="remote">Remote</option>
+          <option value="hybrid">Hybrid</option>
+          <option value="onsite">On-site</option>
+        </select>
+        <select id="experienceFilter" class="filter-select">
+          <option value="">All Experience</option>
+          <option value="0">Fresher</option>
+          <option value="1">1 Year</option>
+          <option value="2">2 Years</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES SECTION -->
+<section class="categories-section" id="talent">
+  <div class="container">
+    <h2 class="section-title">Available Talent Pool</h2>
+    <p class="section-subtitle">Browse verified candidates across various skill categories</p>
+    <div class="categories-grid" id="categoriesGrid">
+      <div class="category-card">
+        <div class="category-icon">💻</div>
+        <h3>Software Developers</h3>
+        <p>Frontend, Backend, Full-stack talent</p>
+        <span class="job-count">8,500+ candidates</span>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🌐</div>
+        <h3>Web Developers</h3>
+        <p>React, Angular, Vue.js specialists</p>
+        <span class="job-count">6,200+ candidates</span>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">📊</div>
+        <h3>Data Analysts</h3>
+        <p>Data science and analytics experts</p>
+        <span class="job-count">4,800+ candidates</span>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">🎨</div>
+        <h3>Designers</h3>
+        <p>UI/UX, Graphic, Product designers</p>
+        <span class="job-count">3,600+ candidates</span>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">📱</div>
+        <h3>Marketing</h3>
+        <p>Digital, Content, Social media pros</p>
+        <span class="job-count">5,400+ candidates</span>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">💼</div>
+        <h3>Non-Tech Roles</h3>
+        <p>Business, Sales, Operations, HR</p>
+        <span class="job-count">7,200+ candidates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">What Companies Say</h2>
+    <p class="section-subtitle">Hear from companies that found great talent on FlipHire</p>
+    <div class="testimonials-container">
+      <div class="testimonial-card active">
+        <div class="testimonial-content">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"FlipHire helped us find 5 amazing freshers in just 2 weeks. The quality of candidates is outstanding, and the platform makes hiring so much easier."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SK</div>
+            <div class="author-info">
+              <h4>Sarah Kumar</h4>
+              <p>HR Director, TechCorp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"As a startup, we needed cost-effective hiring. FlipHire gave us access to motivated freshers who are now key members of our team. Highly recommended!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">RP</div>
+            <div class="author-info">
+              <h4>Raj Patel</h4>
+              <p>Founder, InnovateX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"The verification process gives us confidence. Every candidate we've hired through FlipHire has exceeded our expectations. Best hiring platform for freshers!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AM</div>
+            <div class="author-info">
+              <h4>Anita Mehta</h4>
+              <p>CTO, DataTech Solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-dots">
+      <span class="dot active" onclick="currentTestimonial(0)"></span>
+      <span class="dot" onclick="currentTestimonial(1)"></span>
+      <span class="dot" onclick="currentTestimonial(2)"></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOR CANDIDATES SECTION -->
+<section class="recruiters-section" id="candidates">
+  <div class="container">
+    <div class="recruiters-content">
+      <div class="recruiters-text">
+        <h2>For Candidates</h2>
+        <h3>Get Discovered by Top Companies</h3>
+        <p>Join FlipHire and let companies find you. Create your profile, showcase your skills, and get hired by verified companies actively looking for fresh talent like you.</p>
+        <ul class="recruiters-benefits">
+          <li>✓ Get discovered by hiring companies</li>
+          <li>✓ Verified company profiles</li>
+          <li>✓ Skill-based job matching</li>
+          <li>✓ Direct company connections</li>
+          <li>✓ Free forever for candidates</li>
+        </ul>
+        <button class="btn-primary btn-large" onclick="scrollToSection('cta')">Create Your Profile</button>
+      </div>
+      <div class="recruiters-visual">
+        <div class="recruiter-card">
+          <div class="recruiter-header">
+            <div class="recruiter-avatar"></div>
+            <div class="recruiter-info">
+              <div class="recruiter-name"></div>
+              <div class="recruiter-title"></div>
+            </div>
+          </div>
+          <div class="recruiter-content">
+            <div class="recruiter-line"></div>
+            <div class="recruiter-line short"></div>
+            <div class="recruiter-badge">Available for Hire</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <p class="section-subtitle">Choose the plan that works best for your hiring needs</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3>Starter</h3>
+          <div class="price">
+            <span class="currency">₹</span>
+            <span class="amount">9,999</span>
+            <span class="period">/month</span>
+          </div>
+          <p class="price-description">Perfect for small teams</p>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Up to 10 job postings</li>
+          <li><i class="fas fa-check"></i> Access to 5,000+ candidates</li>
+          <li><i class="fas fa-check"></i> Basic candidate filtering</li>
+          <li><i class="fas fa-check"></i> Email support</li>
+          <li><i class="fas fa-check"></i> Company profile page</li>
+        </ul>
+        <button class="btn-secondary btn-full" onclick="openModal('signupModal')">Get Started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <div class="pricing-header">
+          <h3>Professional</h3>
+          <div class="price">
+            <span class="currency">₹</span>
+            <span class="amount">24,999</span>
+            <span class="period">/month</span>
+          </div>
+          <p class="price-description">For growing companies</p>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Unlimited job postings</li>
+          <li><i class="fas fa-check"></i> Access to all candidates</li>
+          <li><i class="fas fa-check"></i> Advanced filtering & search</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+          <li><i class="fas fa-check"></i> Analytics dashboard</li>
+          <li><i class="fas fa-check"></i> Candidate matching AI</li>
+        </ul>
+        <button class="btn-primary btn-full" onclick="openModal('signupModal')">Get Started</button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3>Enterprise</h3>
+          <div class="price">
+            <span class="currency">₹</span>
+            <span class="amount">Custom</span>
+            <span class="period"></span>
+          </div>
+          <p class="price-description">For large organizations</p>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Everything in Professional</li>
+          <li><i class="fas fa-check"></i> Dedicated account manager</li>
+          <li><i class="fas fa-check"></i> Custom integrations</li>
+          <li><i class="fas fa-check"></i> White-label options</li>
+          <li><i class="fas fa-check"></i> Advanced analytics</li>
+          <li><i class="fas fa-check"></i> 24/7 phone support</li>
+        </ul>
+        <button class="btn-secondary btn-full" onclick="showToast('Contact sales team for custom pricing', 'success')">Contact Sales</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Everything you need to know about FlipHire</p>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How does FlipHire verify candidates?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We verify candidates through multiple checks including education verification, skill assessments, background checks, and portfolio reviews. Every candidate profile goes through our verification process before being made available to companies.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What makes FlipHire different from other hiring platforms?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>FlipHire is specifically designed for freshers and entry-level candidates. We focus exclusively on 0-2 years experience candidates, ensuring companies get access to motivated talent ready to grow. Our verification process and skill-based matching make hiring faster and more effective.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I post multiple job openings?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! Depending on your plan, you can post multiple job openings. Starter plan allows up to 10 postings, Professional plan offers unlimited postings, and Enterprise plans include custom limits based on your needs.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How quickly can I start hiring?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>You can start browsing candidates immediately after signing up. Most companies find suitable candidates within 24-48 hours. Our AI-powered matching helps you find the right talent faster.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is there a free trial available?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! We offer a 14-day free trial for all new companies. No credit card required. You can explore the platform, browse candidates, and post your first job opening completely free.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What support do you provide?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>We provide email support for all plans, priority support for Professional plans, and 24/7 phone support for Enterprise customers. Our support team helps with everything from account setup to finding the right candidates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR SECTION -->
+<section class="roi-calculator-section" id="roi">
+  <div class="container">
+    <h2 class="section-title">Calculate Your Hiring ROI</h2>
+    <p class="section-subtitle">See how much you can save by hiring freshers through FlipHire</p>
+    <div class="roi-calculator">
+      <div class="calculator-inputs">
+        <div class="calc-group">
+          <label>Number of positions to fill</label>
+          <input type="number" id="positions" min="1" value="5" oninput="calculateROI()">
+        </div>
+        <div class="calc-group">
+          <label>Average salary per position (₹)</label>
+          <input type="number" id="salary" min="10000" value="30000" oninput="calculateROI()">
+        </div>
+        <div class="calc-group">
+          <label>Traditional hiring cost per position (₹)</label>
+          <input type="number" id="traditionalCost" min="5000" value="50000" oninput="calculateROI()">
+        </div>
+        <div class="calc-group">
+          <label>Time to hire (days)</label>
+          <input type="number" id="timeToHire" min="1" value="30" oninput="calculateROI()">
+        </div>
+      </div>
+      <div class="calculator-results">
+        <div class="result-card savings">
+          <div class="result-icon"><i class="fas fa-rupee-sign"></i></div>
+          <div class="result-content">
+            <h3>Total Savings</h3>
+            <div class="result-value" id="totalSavings">₹0</div>
+            <p>Compared to traditional hiring</p>
+          </div>
+        </div>
+        <div class="result-card time">
+          <div class="result-icon"><i class="fas fa-clock"></i></div>
+          <div class="result-content">
+            <h3>Time Saved</h3>
+            <div class="result-value" id="timeSaved">0 days</div>
+            <p>Faster hiring process</p>
+          </div>
+        </div>
+        <div class="result-card cost">
+          <div class="result-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="result-content">
+            <h3>Cost per Hire</h3>
+            <div class="result-value" id="costPerHire">₹0</div>
+            <p>With FlipHire</p>
+          </div>
+        </div>
+      </div>
+      <div class="calculator-cta">
+        <button class="btn-primary btn-large" onclick="scrollToSection('pricing')">Start Saving Today</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING COMPARISON SECTION -->
+<section class="comparison-section" id="comparison">
+  <div class="container">
+    <h2 class="section-title">Compare Plans</h2>
+    <p class="section-subtitle">Find the perfect plan for your hiring needs</p>
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Features</th>
+            <th>Starter</th>
+            <th>Professional</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Job Postings</td>
+            <td>Up to 10</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>Candidate Access</td>
+            <td>5,000+</td>
+            <td>All Candidates</td>
+            <td>All Candidates</td>
+          </tr>
+          <tr>
+            <td>Advanced Filtering</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>AI Candidate Matching</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Analytics Dashboard</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Priority Support</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Dedicated Account Manager</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Custom Integrations</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>24/7 Phone Support</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr class="pricing-row">
+            <td>Monthly Price</td>
+            <td>₹9,999</td>
+            <td>₹24,999</td>
+            <td>Custom</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="comparison-cta">
+      <button class="btn-primary btn-large" onclick="openModal('signupModal')">Get Started</button>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS DASHBOARD PREVIEW -->
+<section class="analytics-section" id="analytics">
+  <div class="container">
+    <h2 class="section-title">Advanced Analytics & Insights</h2>
+    <p class="section-subtitle">Make data-driven hiring decisions with comprehensive analytics</p>
+    <div class="analytics-preview">
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <div class="analytics-header">
+            <h3><i class="fas fa-chart-bar"></i> Hiring Metrics</h3>
+            <select class="analytics-filter">
+              <option>Last 30 days</option>
+              <option>Last 90 days</option>
+              <option>Last year</option>
+            </select>
+          </div>
+          <div class="analytics-chart">
+            <div class="chart-bar" style="height: 80%">
+              <span class="chart-value">85%</span>
+            </div>
+            <div class="chart-bar" style="height: 65%">
+              <span class="chart-value">65%</span>
+            </div>
+            <div class="chart-bar" style="height: 90%">
+              <span class="chart-value">90%</span>
+            </div>
+            <div class="chart-bar" style="height: 75%">
+              <span class="chart-value">75%</span>
+            </div>
+            <div class="chart-bar" style="height: 95%">
+              <span class="chart-value">95%</span>
+            </div>
+          </div>
+          <div class="chart-labels">
+            <span>Views</span>
+            <span>Applications</span>
+            <span>Interviews</span>
+            <span>Offers</span>
+            <span>Hires</span>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-header">
+            <h3><i class="fas fa-users"></i> Candidate Sources</h3>
+          </div>
+          <div class="source-stats">
+            <div class="source-item">
+              <div class="source-bar">
+                <div class="source-fill" style="width: 45%"></div>
+              </div>
+              <div class="source-info">
+                <span class="source-name">Direct Search</span>
+                <span class="source-value">45%</span>
+              </div>
+            </div>
+            <div class="source-item">
+              <div class="source-bar">
+                <div class="source-fill" style="width: 30%"></div>
+              </div>
+              <div class="source-info">
+                <span class="source-name">AI Matching</span>
+                <span class="source-value">30%</span>
+              </div>
+            </div>
+            <div class="source-item">
+              <div class="source-bar">
+                <div class="source-fill" style="width: 15%"></div>
+              </div>
+              <div class="source-info">
+                <span class="source-name">Referrals</span>
+                <span class="source-value">15%</span>
+              </div>
+            </div>
+            <div class="source-item">
+              <div class="source-bar">
+                <div class="source-fill" style="width: 10%"></div>
+              </div>
+              <div class="source-info">
+                <span class="source-name">Other</span>
+                <span class="source-value">10%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-header">
+            <h3><i class="fas fa-clock"></i> Time to Hire</h3>
+          </div>
+          <div class="time-metrics">
+            <div class="time-metric">
+              <div class="time-value">12</div>
+              <div class="time-label">Days Average</div>
+            </div>
+            <div class="time-metric">
+              <div class="time-value">8</div>
+              <div class="time-label">Days Fastest</div>
+            </div>
+            <div class="time-metric">
+              <div class="time-value">-60%</div>
+              <div class="time-label">vs Industry</div>
+            </div>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-header">
+            <h3><i class="fas fa-dollar-sign"></i> Cost Analysis</h3>
+          </div>
+          <div class="cost-breakdown">
+            <div class="cost-item">
+              <span>Cost per Hire</span>
+              <span class="cost-amount">₹8,500</span>
+            </div>
+            <div class="cost-item">
+              <span>Total Savings</span>
+              <span class="cost-amount savings">₹125,000</span>
+            </div>
+            <div class="cost-item">
+              <span>ROI</span>
+              <span class="cost-amount roi">285%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="analytics-cta">
+        <p>Get full access to advanced analytics with Professional or Enterprise plans</p>
+        <button class="btn-primary btn-large" onclick="scrollToSection('pricing')">View Plans</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS STORIES SECTION -->
+<section class="success-stories-section">
+  <div class="container">
+    <h2 class="section-title">Success Stories</h2>
+    <p class="section-subtitle">Real companies, real results</p>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-company-logo">TC</div>
+          <div class="story-info">
+            <h4>TechCorp</h4>
+            <p>Software Company • 50-200 employees</p>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"Hired 12 freshers in 3 months. The quality of candidates exceeded our expectations. FlipHire made our recruitment process 3x faster."</p>
+        </div>
+        <div class="story-metrics">
+          <div class="metric">
+            <div class="metric-value">12</div>
+            <div class="metric-label">Hires</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">3x</div>
+            <div class="metric-label">Faster</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">95%</div>
+            <div class="metric-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-company-logo">IX</div>
+          <div class="story-info">
+            <h4>InnovateX</h4>
+            <p>Startup • 10-50 employees</p>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"As a startup, we needed cost-effective hiring. FlipHire helped us build our core team with talented freshers who are now leading projects."</p>
+        </div>
+        <div class="story-metrics">
+          <div class="metric">
+            <div class="metric-value">8</div>
+            <div class="metric-label">Hires</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">60%</div>
+            <div class="metric-label">Cost Saved</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Retention</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-company-logo">DS</div>
+          <div class="story-info">
+            <h4>DataTech Solutions</h4>
+            <p>Data Analytics • 200+ employees</p>
+          </div>
+        </div>
+        <div class="story-content">
+          <p>"The verification process is excellent. Every candidate we interviewed was exactly as described. Highly recommend FlipHire for quality hires."</p>
+        </div>
+        <div class="story-metrics">
+          <div class="metric">
+            <div class="metric-value">25</div>
+            <div class="metric-label">Hires</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">2 weeks</div>
+            <div class="metric-label">Avg. Time</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">92%</div>
+            <div class="metric-label">Match Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION SECTION -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Hire Fresh Talent?</h2>
+      <p>Join thousands of companies discovering and hiring motivated freshers through FlipHire. Start building your team today!</p>
+      <div class="cta-buttons">
+        <button class="btn-primary btn-large" onclick="handleGetStarted()">Start Hiring Now</button>
+        <button class="btn-secondary btn-large" onclick="scrollToSection('pricing')">View Pricing</button>
+      </div>
+      <p class="cta-note">Free trial available • No setup fees • Cancel anytime</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>FlipHire</h3>
+        <p>The fresher-first hiring platform where companies discover and hire verified students and entry-level candidates.</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>For Companies</h4>
+          <a href="#talent">Find Talent</a>
+          <a href="#talent">Browse Candidates</a>
+          <a href="#how">How It Works</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="footer-column">
+          <h4>For Candidates</h4>
+          <a href="#candidates">Create Profile</a>
+          <a href="#">Get Discovered</a>
+          <a href="#">Career Resources</a>
+          <a href="#">Success Stories</a>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">FAQs</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>All copyrights are reserved by the owner of the website</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING ACTION BUTTON -->
+<button class="fab" id="fab" onclick="scrollToTop()" aria-label="Scroll to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('signupModal')">&times;</span>
+    <h2>Start Hiring Today</h2>
+    <form onsubmit="handleSignup(event)">
+      <div class="form-group">
+        <label>Company Name</label>
+        <input type="text" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required>
+      </div>
+      <button type="submit" class="btn-primary btn-full">Create Account</button>
+      <p class="modal-footer-text">Already have an account? <a href="#" onclick="openModal('loginModal'); closeModal('signupModal');">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+    <h2>Welcome Back</h2>
+    <form onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required>
+      </div>
+      <button type="submit" class="btn-primary btn-full">Sign In</button>
+      <p class="modal-footer-text">Don't have an account? <a href="#" onclick="openModal('signupModal'); closeModal('loginModal');">Sign up</a></p>
+    </form>
+  </div>
+</div>
+
+<script src="Javascript.js"></script>
+</body>
+</html>
