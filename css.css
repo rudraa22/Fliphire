@@ -1,6 +1,9 @@
 /* ============================================
    FLIPHIRE LANDING PAGE - MODERN & CLEAN DESIGN
    ============================================ */
+body {
+  background: red;
+}
 
 * {
   margin: 0;
@@ -2608,3 +2611,4 @@ select:focus {
     page-break-after: avoid;
   }
 }
+
